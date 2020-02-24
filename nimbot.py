@@ -2,6 +2,8 @@ import os
 import random
 from discord.ext import commands
 from dotenv import load_dotenv
+from datetime import datetime
+import pytz
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -20,6 +22,12 @@ async def flip_coin(ctx):
 async def avg(ctx, a,b)
     await ctx.send(sum(a,b)/2)
 
+@bot.command(name ="time")
+async def time(ctx):
+    time_zone_NJ = pytz.timezone('US/Eastern')
+    now = datetime.now(time_zone_NJ)
+    current_time = now.strftime("%H:%M:%S")
+    await ctx.send(current_time)
 
 bot.run(token)
 
